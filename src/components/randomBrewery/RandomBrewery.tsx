@@ -70,7 +70,7 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
         </div>
         <Button
           handleClick={handleClick}
-          title='Add'
+          title='Add To my brewries'
           ifTruebtnRed={false}
         ></Button>
       </div>

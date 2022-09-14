@@ -1,0 +1,44 @@
+.container{
+    width: clamp(300px, 100vw, 400px);
+    height:auto;
+    background-size: cover;
+    padding-bottom: 2vh;
+    
+}
+.title{
+    background-color: rgba(0, 0, 0, 0.837);
+    width: 100%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    text-decoration: underline 2px rgb(21, 211, 211);
+}
+
+.span{
+    color: rgb(249, 192, 24);
+}
+.infodiv{
+    background-color: rgba(0, 0, 0, 0.822);
+    padding: 2vw;
+    margin-top: 4vh;
+    color: white;
+    font-size: calc(15px + 0.3vw);
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin-bottom: 2vh;
+}
+.infoSpan{
+    font-size: calc(10px + 0.5vw);
+    width: 100%;
+    padding: 2vh;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: rgb(21, 211, 211);
+    text-decoration: underline 1px rgb(249, 192, 24);
+}
+.btnWrapper{
+    text-align: center;
+}
