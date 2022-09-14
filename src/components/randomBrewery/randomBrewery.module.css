@@ -1,0 +1,63 @@
+.divWrapper{
+    width: clamp(350px, 30vw, 30vw);    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    align-items: center;
+    margin-top: 2vh;
+    margin-left: 5vw;
+    width: clamp(350px, 30vw, 30vw);
+    height: 60vh;
+    border-radius: 5px;
+    background-color: rgb(121, 118, 118);
+    background-image: url('https://images.unsplash.com/photo-1584225065152-4a1454aa3d4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80');
+}
+.titlebreweryOfTheDay{
+    margin-top: 3vh;
+    margin-left: 5vw;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    text-decoration: underline 2px  rgb(21, 211, 211);
+
+}
+.title{
+    background-color: rgba(0, 0, 0, 0.837);
+    width: 100%;
+    padding: 2vh;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    text-decoration: underline 2px rgb(21, 211, 211);
+}
+.span{
+    color: rgb(249, 192, 24);
+}
+.infodiv{
+    background-color: rgba(0, 0, 0, 0.822);
+    border-radius: 5px;
+    padding: 2vw;
+    margin-top: 4vh;
+    color: white;
+    font-size: calc(15px + 0.3vw);
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin-bottom: 2vh;
+}
+.infoSpan{
+    font-size: calc(10px + 0.5vw);
+    width: 100%;
+    padding: 2vh;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: rgb(21, 211, 211);
+    text-decoration: underline 1px rgb(249, 192, 24);
+}

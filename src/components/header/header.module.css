@@ -1,0 +1,78 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 0vw;
+    padding-top: 2vh;
+    height: 10vh;
+    width: 100vw;
+    box-shadow: 0px 0px 5px 0px  white;
+
+}
+.title{
+    font-family: 'Anton', sans-serif;
+    color: rgb(249, 192, 24);
+    text-decoration: underline 2px rgb(21, 211, 211);
+    margin-left: 2vw;
+    z-index: 2;
+}
+.span{
+    color: rgb(255, 255, 255);
+    text-decoration: underline 2px rgb(249, 192, 24);
+}
+
+
+/*---------------Burger---------------*/
+
+.wrapper{
+    margin-right: 4vw;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: clamp(50px, 3vw, 8vw);
+    height: 4vh;
+    cursor: pointer;
+    z-index: 2;
+    }
+.rowOne{
+    position: relative;
+    width: auto;
+    height: 1vh;
+    border-radius: 5px;
+    background-color: white;
+}
+.rowOneActive{
+    position: relative;
+    width: auto;
+    height: 1vh;
+    border-radius: 5px;
+    background-color: white;
+    animation-name: moveLayerOne;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+.rowTwo{
+    width: auto;
+    height: 1vh;
+    border-radius: 5px;
+    background-color: white;
+}
+.rowThree{
+    width: auto;
+    height: 1vh;
+    border-radius: 5px;
+    background-color: white;
+}
+@keyframes  moveLayerOne{
+    0%{
+      background-color: white;
+      left: 0vw;
+      top: 0vh;
+        }
+    100%{
+        transform: rotate(360deg);
+        background-color: yellow;
+      
+    }
+  }
