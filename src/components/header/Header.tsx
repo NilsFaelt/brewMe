@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { tooglemenu } from "../../redux/toogle";
+import { closeMenu } from "../../redux/toogle";
 import Styles from "./header.module.css";
 
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const closMenu = () => {
-    dispatch(tooglemenu());
+    dispatch(closeMenu());
   };
 
   const handleClick = () => {

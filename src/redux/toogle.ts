@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { type } from "os";
+
 
 interface InitialState {
     open:boolean
@@ -14,10 +14,13 @@ export const toogleSlice= createSlice({
     reducers:{
         tooglemenu:(state )=>{
             state.open = !state.open
+        },
+        closeMenu:(state )=>{
+            state.open =  true
         }
     }
 })
 
 
-export const {tooglemenu} = toogleSlice.actions
+export const {tooglemenu, closeMenu} = toogleSlice.actions
 export default toogleSlice.reducer

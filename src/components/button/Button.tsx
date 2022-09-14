@@ -10,7 +10,10 @@ interface Props {
 const Button: React.FC<Props> = ({ title, ifTruebtnRed, handleClick }) => {
   return (
     <div>
-      <button className={!ifTruebtnRed ? Styles.btn : Styles.btnDanger}>
+      <button
+        onClick={handleClick}
+        className={!ifTruebtnRed ? Styles.btn : Styles.btnDanger}
+      >
         {title}
       </button>
     </div>

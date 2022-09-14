@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import { addBrewry } from "../../redux/myBreweries";
 import Button from "../button/Button";
 import Styles from "./randomBrewery.module.css";
 
@@ -9,7 +11,6 @@ interface Brewery {
   id: string;
   name: string;
   state: string;
-  street: string;
   website_url: string;
 }
 
@@ -18,6 +19,21 @@ interface Props {
 }
 
 const RandomBrewery: React.FC<Props> = ({ brewery }) => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(
+      addBrewry({
+        brewery_type: brewery?.brewery_type,
+        city: brewery?.city,
+        country: brewery?.country,
+        created_at: brewery?.created_at,
+        id: brewery?.id,
+        name: brewery?.name,
+        state: brewery?.state,
+        website_url: brewery?.website_url,
+      })
+    );
+  };
   return (
     <div className={Styles.divWrapper}>
       <h2 className={Styles.titlebreweryOfTheDay}>
@@ -52,7 +68,11 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
             </a>
           </p>
         </div>
-        <Button title='Add' ifTruebtnRed={false}></Button>
+        <Button
+          handleClick={handleClick}
+          title='Add'
+          ifTruebtnRed={false}
+        ></Button>
       </div>
     </div>
   );
