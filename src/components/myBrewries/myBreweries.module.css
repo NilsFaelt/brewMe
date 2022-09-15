@@ -18,3 +18,21 @@
     text-decoration: underline 2px rgb(21, 211, 211);
     margin-bottom: 5vh;
 }
+.titleNotAddedYet{
+    width: 100%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: rgb(249, 192, 24);
+    text-decoration: underline 2px rgb(21, 211, 211);
+}
+.underTitle{
+    width: 100%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    text-decoration: underline 2px rgb(249, 192, 24);
+}
