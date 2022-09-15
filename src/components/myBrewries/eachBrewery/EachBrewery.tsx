@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { nrAndBooleanForImgGenetarot } from "../../../functions/nrAndBooleanForImgGenetarot";
+import { toogleDone } from "../../../redux/myBreweries";
 import Button from "../../button/Button";
 import Styles from "./eachBrewery.module.css";
 
@@ -17,14 +21,22 @@ interface Props {
 }
 
 const EachBrewery: React.FC<Props> = ({ brewery }) => {
+  const dispatch = useDispatch();
+  const [urlGeneratorNr, setUrlGeneratorNr] = useState<number>(5);
   const arrayOfUrls = [
     "https://images.unsplash.com/photo-1604040605063-8323c2b450cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80",
     "https://images.unsplash.com/photo-1623937228271-992646fb0fba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     "https://images.unsplash.com/photo-1608270586620-248524c67de9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
   ];
-  const urlGeneratorNr = Math.floor(Math.random() * 3);
-  console.log(urlGeneratorNr);
+
+  if (urlGeneratorNr === 5) {
+    setUrlGeneratorNr(nrAndBooleanForImgGenetarot());
+  }
+
+  const handleClick = () => {
+    dispatch(toogleDone({ id: brewery?.id }));
+  };
   return (
     <div
       className={Styles.container}
@@ -59,7 +71,11 @@ const EachBrewery: React.FC<Props> = ({ brewery }) => {
           </p>
         </div>
         <div className={Styles.btnWrapper}>
-          <Button ifTruebtnRed={false} title='Visited' />
+          <Button
+            handleClick={handleClick}
+            ifTruebtnRed={false}
+            title='Visited'
+          />
         </div>
       </div>
     </div>

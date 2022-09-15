@@ -12,6 +12,7 @@ interface Brewery {
   name: string;
   state: string;
   website_url: string;
+  done: boolean;
 }
 
 interface Props {
@@ -31,6 +32,7 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
         name: brewery?.name,
         state: brewery?.state,
         website_url: brewery?.website_url,
+        done: false,
       })
     );
   };

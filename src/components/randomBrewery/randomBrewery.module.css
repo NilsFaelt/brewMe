@@ -45,8 +45,9 @@
 }
 .infodiv{
     background-color: rgba(0, 0, 0, 0.822);
-    border-radius: 5px;
-    padding: 2vw;
+    width: 100%;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
     margin-top: 4vh;
     color: white;
     font-size: calc(15px + 0.3vw);

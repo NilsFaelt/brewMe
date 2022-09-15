@@ -11,10 +11,10 @@ interface Breweries{
         state: string;
         street: string;
         website_url: string;   
+        done:boolean
 }
 interface InitialState {
     breweries:Breweries[] | []
-
 }
 
 
@@ -26,13 +26,24 @@ export const myBrewries:Slice = createSlice({
         breweries: []
     },
     reducers:{
-        addBrewry:(state , action )=>{
+        addBrewry:(state, action )=>{
         state.breweries = [...state.breweries, action.payload]
             console.log(state.breweries, 'INSIED MY BREWS')
         },
+        toogleDone:(state, action)=>{
+           state.breweries = state.breweries.map((brewery:Breweries)=>{
+                if(brewery.id === action.payload.id){
+                    return {...brewery, done: !brewery.done }
+                }
+                else{
+                    return brewery
+                }
+            })
+            console.log(state.breweries)
+        }
     }
 })
 
 
-export const {addBrewry } = myBrewries.actions
+export const {addBrewry, toogleDone } = myBrewries.actions
 export default myBrewries.reducer

@@ -20,7 +20,7 @@ const MyBreweriesModule = () => {
     <div className={Styles.container}>
       <h2 className={Styles.title}>My Breweries</h2>
       {breweries?.map((brewery: Brewery | null) => {
-        return <EachBrewery brewery={brewery} />;
+        return <EachBrewery key={brewery?.id} brewery={brewery} />;
       })}
     </div>
   );

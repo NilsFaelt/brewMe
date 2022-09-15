@@ -13,6 +13,7 @@ interface Brewery {
   state: string;
   street: string;
   website_url: string;
+  done: boolean;
 }
 
 const MainPage = () => {
