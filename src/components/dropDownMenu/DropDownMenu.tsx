@@ -13,7 +13,7 @@ const DropDownMenu = () => {
     <nav className={open ? Styles.container : Styles.containerActive}>
       <ul className={open ? Styles.ul : Styles.ulActive}>
         <Link onClick={closeMenu} className={Styles.link} to={"/myBrewries"}>
-          My Brews
+          My Breweries
         </Link>
         <Link onClick={closeMenu} className={Styles.link} to={"/searchBrewery"}>
           Search Brewery

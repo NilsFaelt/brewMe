@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchRandomBrewery } from "../../functions/fetchRandomBrewery";
+import RandomBeer from "../randomBeer/RandomBeer";
 import RandomBrewery from "../randomBrewery/RandomBrewery";
 import Styles from "./mainPage.module.css";
 
@@ -29,7 +30,8 @@ const MainPage = () => {
   }, []);
   console.log(brewery);
   return (
-    <div style={{ color: "white" }}>
+    <div className={Styles.container}>
+      <RandomBeer />
       <RandomBrewery brewery={brewery} />
     </div>
   );

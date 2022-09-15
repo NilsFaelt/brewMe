@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { fetchBrewerybyBrewery } from "../../functions/fetchBrewerybyBrewery";
 import { getaBunch } from "../../functions/getaBunch";
 import EachBrewery from "../myBrewries/eachBrewery/EachBrewery";
@@ -17,6 +17,7 @@ interface Brewery {
 }
 
 const SearchBrewery = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [brewries, setBrewries] = useState<Brewery[] | null>(null);
   const [searchValue, setsearchValue] = useState({
     by: "By Brewery",
@@ -33,6 +34,7 @@ const SearchBrewery = () => {
     };
     fetchWrapperFunc();
   }, [inputValue]);
+
   useEffect(() => {
     if (searchValue.query === "bunch") {
       const fetchWrapperFunc = async () => {
@@ -43,6 +45,7 @@ const SearchBrewery = () => {
       };
       fetchWrapperFunc();
     }
+    inputRef.current?.focus();
   }, [searchValue]);
 
   return (
@@ -75,6 +78,7 @@ const SearchBrewery = () => {
         </li>
       </ul>
       <input
+        ref={inputRef}
         onChange={(e) => setInputValue(e.target.value)}
         className={Styles.input}
         type='text'

@@ -15,7 +15,7 @@
     color: rgb(249, 192, 24);
     text-decoration: underline 2px rgb(21, 211, 211);
     margin-left: 2vw;
-    z-index: 2;
+    z-index: 4;
 }
 .span{
     color: rgb(255, 255, 255);
@@ -34,7 +34,7 @@
     width: clamp(50px, 3vw, 8vw);
     height: 4vh;
     cursor: pointer;
-    z-index: 2;
+    z-index: 4;
     }
 .rowOne{
     position: relative;

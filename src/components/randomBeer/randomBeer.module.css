@@ -1,0 +1,23 @@
+.container{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-left: 6vw;
+    width: clamp(350px, 30vw, 30vw);    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+    align-items: center;
+}
+.img{
+    width: clamp(150px, 10vw, 30vw);   
+}
+.infoDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    color: aliceblue;
+}
+.infoText{
+    font-size: calc(10px + 0.5vw);
+}
