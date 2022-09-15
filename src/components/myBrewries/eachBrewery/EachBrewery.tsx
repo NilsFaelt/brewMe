@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nrAndBooleanForImgGenetarot } from "../../../functions/nrAndBooleanForImgGenetarot";
 import { toogleDone } from "../../../redux/myBreweries";
+import { addBrewry } from "../../../redux/myBreweries";
 import Button from "../../button/Button";
 import Styles from "./eachBrewery.module.css";
 import beer from "../../../assets/img/beer.png";
+import { checkIfBreweryIsAlreadyChoosen } from "../../../functions/checkIfBreweryIsAlreadyChoosen";
 
 interface Brewery {
   brewery_type: string;
@@ -20,9 +22,15 @@ interface Brewery {
 
 interface Props {
   brewery: Brewery | null;
+  toogleBtnValue: boolean;
+  titleValue: boolean;
 }
 
-const EachBrewery: React.FC<Props> = ({ brewery }) => {
+const EachBrewery: React.FC<Props> = ({
+  brewery,
+  toogleBtnValue,
+  titleValue,
+}) => {
   const dispatch = useDispatch();
   const [urlGeneratorNr, setUrlGeneratorNr] = useState<number>(5);
   const arrayOfUrls = [
@@ -36,6 +44,30 @@ const EachBrewery: React.FC<Props> = ({ brewery }) => {
     setUrlGeneratorNr(nrAndBooleanForImgGenetarot());
   }
 
+  const { breweries } = useSelector((state: any) => state.myBreweries);
+  const breweryDidAlreadyExist = checkIfBreweryIsAlreadyChoosen(
+    brewery,
+    breweries
+  );
+
+  const handleClicked = () => {
+    if (!breweryDidAlreadyExist) {
+      dispatch(
+        addBrewry({
+          brewery_type: brewery?.brewery_type,
+          city: brewery?.city,
+          country: brewery?.country,
+          created_at: brewery?.created_at,
+          id: brewery?.id,
+          name: brewery?.name,
+          state: brewery?.state,
+          website_url: brewery?.website_url,
+          done: false,
+        })
+      );
+    }
+  };
+
   const handleClick = () => {
     dispatch(toogleDone({ id: brewery?.id }));
   };
@@ -45,13 +77,25 @@ const EachBrewery: React.FC<Props> = ({ brewery }) => {
       style={{ backgroundImage: `url(${arrayOfUrls[urlGeneratorNr]})` }}
     >
       <div className={Styles.container}>
-        <h3 className={Styles.title}>{brewery?.name}</h3>
+        {!breweryDidAlreadyExist ? (
+          <h3 className={Styles.title}>{brewery?.name}</h3>
+        ) : (
+          <h3 className={Styles.title}>
+            {brewery?.name}{" "}
+            {titleValue ? (
+              <span className={Styles.added}>/Added to MyBrews</span>
+            ) : null}
+          </h3>
+        )}
         <div className={Styles.infodiv}>
           <p>
             <span className={Styles.infoSpan}>Country:</span> {brewery?.country}
           </p>
           <p>
             <span className={Styles.infoSpan}>State:</span> {brewery?.state}
+          </p>
+          <p>
+            <span className={Styles.infoSpan}>City:</span> {brewery?.city}
           </p>
           <p>
             {brewery?.done ? (
@@ -79,11 +123,19 @@ const EachBrewery: React.FC<Props> = ({ brewery }) => {
           </p>
         </div>
         <div className={Styles.btnWrapper}>
-          <Button
-            handleClick={handleClick}
-            ifTruebtnRed={false}
-            title={brewery?.done ? "Not Visited" : "Visited"}
-          />
+          {toogleBtnValue ? (
+            <Button
+              handleClick={handleClicked}
+              ifTruebtnRed={false}
+              title={"Add To My Breweries"}
+            />
+          ) : (
+            <Button
+              handleClick={handleClick}
+              ifTruebtnRed={false}
+              title={brewery?.done ? "Not Visited" : "Visited"}
+            />
+          )}
         </div>
       </div>
     </div>

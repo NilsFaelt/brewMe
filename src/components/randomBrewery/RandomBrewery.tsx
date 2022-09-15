@@ -26,7 +26,6 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
     brewery,
     breweries
   );
-  console.log(breweryDidAlreadyExist, "existststtsts");
   const dispatch = useDispatch();
   const handleClick = () => {
     if (!breweryDidAlreadyExist) {
@@ -88,7 +87,7 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
         </div>
         <Button
           handleClick={handleClick}
-          title='Add To my brewries'
+          title='Add To My Brewries'
           ifTruebtnRed={false}
         ></Button>
       </div>

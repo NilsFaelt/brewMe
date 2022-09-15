@@ -42,3 +42,11 @@
 .li:hover{
    color: rgb(249, 192, 24);
 }
+.dispalyBreweriesDiv{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10vh;
+}

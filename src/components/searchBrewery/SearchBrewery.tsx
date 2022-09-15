@@ -1,9 +1,22 @@
 import { FormEvent, useEffect, useState } from "react";
 import { fetchBrewerybyBrewery } from "../../functions/fetchBrewerybyBrewery";
+import EachBrewery from "../myBrewries/eachBrewery/EachBrewery";
 import Styles from "./searchBrewery.module.css";
 
+interface Brewery {
+  brewery_type: string;
+  city: string;
+  country: string;
+  created_at: string;
+  id: string;
+  name: string;
+  state: string;
+  website_url: string;
+  done: boolean;
+}
+
 const SearchBrewery = () => {
-  const [brewries, setBrewries] = useState(null);
+  const [brewries, setBrewries] = useState<Brewery[] | null>(null);
   const [searchValue, setsearchValue] = useState({
     by: "By Brewery",
     query: "by_name",
@@ -13,10 +26,13 @@ const SearchBrewery = () => {
   useEffect(() => {
     const fetchWrapperFunc = async () => {
       const data = await fetchBrewerybyBrewery(searchValue.query, inputValue);
-      console.log(data);
+      if (data?.data) {
+        setBrewries(data.data);
+      }
     };
     fetchWrapperFunc();
   }, [inputValue]);
+  console.log(brewries);
 
   return (
     <div className={Styles.container}>
@@ -55,6 +71,17 @@ const SearchBrewery = () => {
         type='text'
         placeholder={searchValue.by}
       />
+      <div className={Styles.dispalyBreweriesDiv}>
+        {brewries?.map((brewery) => {
+          return (
+            <EachBrewery
+              brewery={brewery}
+              toogleBtnValue={true}
+              titleValue={true}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
