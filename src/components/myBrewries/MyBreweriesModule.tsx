@@ -12,6 +12,7 @@ interface Brewery {
   name: string;
   state: string;
   website_url: string;
+  done: boolean;
 }
 
 const MyBreweriesModule = () => {

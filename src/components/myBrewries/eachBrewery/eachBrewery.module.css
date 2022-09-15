@@ -42,3 +42,30 @@
 .btnWrapper{
     text-align: center;
 }
+.beenThereDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(25deg);
+    z-index: 2;
+    margin-top: -5vh;
+    height: 10vh;
+    width: clamp(100px, 10vw, 10vw);
+    margin-left: clamp(100px, 10vw, 10vw);
+    z-index: 2;
+    position: absolute;
+    padding-left: clamp(110px, 8vw, 8vw);
+ 
+
+}
+.beenThereTitle{
+    color: rgb(249, 192, 24);
+    text-decoration: underline 2px rgb(21, 211, 211);
+    font-family: 'Anton', sans-serif;
+    font-size: calc(20px + 0.5vw);
+}
+.img{
+  
+    width: clamp(100px, 7vw, 10vw);
+}

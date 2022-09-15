@@ -4,6 +4,7 @@ import { nrAndBooleanForImgGenetarot } from "../../../functions/nrAndBooleanForI
 import { toogleDone } from "../../../redux/myBreweries";
 import Button from "../../button/Button";
 import Styles from "./eachBrewery.module.css";
+import beer from "../../../assets/img/beer.png";
 
 interface Brewery {
   brewery_type: string;
@@ -14,6 +15,7 @@ interface Brewery {
   name: string;
   state: string;
   website_url: string;
+  done: boolean;
 }
 
 interface Props {
@@ -52,6 +54,12 @@ const EachBrewery: React.FC<Props> = ({ brewery }) => {
             <span className={Styles.infoSpan}>State:</span> {brewery?.state}
           </p>
           <p>
+            {brewery?.done ? (
+              <div className={Styles.beenThereDiv}>
+                <h3 className={Styles.beenThereTitle}>Been There</h3>
+                <img className={Styles.img} src={beer} alt='' />{" "}
+              </div>
+            ) : null}
             <span className={Styles.infoSpan}>Started:</span>{" "}
             {brewery?.created_at}
           </p>
@@ -74,7 +82,7 @@ const EachBrewery: React.FC<Props> = ({ brewery }) => {
           <Button
             handleClick={handleClick}
             ifTruebtnRed={false}
-            title='Visited'
+            title={brewery?.done ? "Not Visited" : "Visited"}
           />
         </div>
       </div>

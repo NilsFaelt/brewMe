@@ -1,4 +1,5 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { checkIfBreweryIsAlreadyChoosen } from "../../functions/checkIfBreweryIsAlreadyChoosen";
 import { addBrewry } from "../../redux/myBreweries";
 import Button from "../button/Button";
 import Styles from "./randomBrewery.module.css";
@@ -20,21 +21,29 @@ interface Props {
 }
 
 const RandomBrewery: React.FC<Props> = ({ brewery }) => {
+  const { breweries } = useSelector((state: any) => state.myBreweries);
+  const breweryDidAlreadyExist = checkIfBreweryIsAlreadyChoosen(
+    brewery,
+    breweries
+  );
+  console.log(breweryDidAlreadyExist, "existststtsts");
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(
-      addBrewry({
-        brewery_type: brewery?.brewery_type,
-        city: brewery?.city,
-        country: brewery?.country,
-        created_at: brewery?.created_at,
-        id: brewery?.id,
-        name: brewery?.name,
-        state: brewery?.state,
-        website_url: brewery?.website_url,
-        done: false,
-      })
-    );
+    if (!breweryDidAlreadyExist) {
+      dispatch(
+        addBrewry({
+          brewery_type: brewery?.brewery_type,
+          city: brewery?.city,
+          country: brewery?.country,
+          created_at: brewery?.created_at,
+          id: brewery?.id,
+          name: brewery?.name,
+          state: brewery?.state,
+          website_url: brewery?.website_url,
+          done: false,
+        })
+      );
+    }
   };
   return (
     <div className={Styles.divWrapper}>
@@ -43,7 +52,14 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
         <span className={Styles.span}>The</span> Day
       </h2>
       <div className={Styles.container}>
-        <h3 className={Styles.title}>{brewery?.name}</h3>
+        {!breweryDidAlreadyExist ? (
+          <h3 className={Styles.title}>{brewery?.name}</h3>
+        ) : (
+          <h3 className={Styles.title}>
+            {brewery?.name}{" "}
+            <span className={Styles.added}>/Added to MyBrews</span>{" "}
+          </h3>
+        )}
         <div className={Styles.infodiv}>
           <p>
             <span className={Styles.infoSpan}>Country:</span> {brewery?.country}
