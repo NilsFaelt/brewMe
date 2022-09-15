@@ -1,5 +1,5 @@
 .container{
-    width: clamp(300px, 100vw, 400px);
+    width: clamp(300px, 100vw, 430px);
     height:auto;
     background-size: cover;
     padding-bottom: 2vh;
