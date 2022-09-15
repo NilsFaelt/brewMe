@@ -67,6 +67,9 @@ const RandomBrewery: React.FC<Props> = ({ brewery }) => {
             <span className={Styles.infoSpan}>State:</span> {brewery?.state}
           </p>
           <p>
+            <span className={Styles.infoSpan}>City:</span> {brewery?.city}
+          </p>
+          <p>
             <span className={Styles.infoSpan}>Started:</span>{" "}
             {brewery?.created_at}
           </p>

@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { fetchBrewerybyBrewery } from "../../functions/fetchBrewerybyBrewery";
+import { getaBunch } from "../../functions/getaBunch";
 import EachBrewery from "../myBrewries/eachBrewery/EachBrewery";
 import Styles from "./searchBrewery.module.css";
 
@@ -32,7 +33,17 @@ const SearchBrewery = () => {
     };
     fetchWrapperFunc();
   }, [inputValue]);
-  console.log(brewries);
+  useEffect(() => {
+    if (searchValue.query === "bunch") {
+      const fetchWrapperFunc = async () => {
+        const data = await getaBunch();
+        if (data?.data) {
+          setBrewries(data.data);
+        }
+      };
+      fetchWrapperFunc();
+    }
+  }, [searchValue]);
 
   return (
     <div className={Styles.container}>
@@ -57,9 +68,7 @@ const SearchBrewery = () => {
           By City
         </li>
         <li
-          onClick={() =>
-            setsearchValue({ by: " Get A Bunch", query: "by_name" })
-          }
+          onClick={() => setsearchValue({ by: " Get A Bunch", query: "bunch" })}
           className={Styles.li}
         >
           Get A Bunch
