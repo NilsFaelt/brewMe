@@ -36,3 +36,11 @@
     color: white;
     text-decoration: underline 2px rgb(249, 192, 24);
 }
+.visitedbreweriesText{
+    color: teal;
+    font-family: 'Anton', sans-serif;
+    text-decoration: underline 1px rgb(249, 192, 24);
+}
+.visitedSpan{
+    color:rgb(249, 192, 24) ;
+}

@@ -17,9 +17,15 @@ interface Brewery {
 
 const MyBreweriesModule = () => {
   const { breweries } = useSelector((state: any) => state.myBreweries);
+  const visitedBreweries = breweries.filter((brewery: Brewery) => brewery.done);
   return (
     <div className={Styles.container}>
       <h2 className={Styles.title}>My Breweries</h2>
+      <p className={Styles.visitedbreweriesText}>
+        Visited Breweries:{" "}
+        <span className={Styles.visitedSpan}>{visitedBreweries.length}</span> /
+        {breweries.length}
+      </p>
       {breweries.length === 0 ? (
         <div>
           <h3 className={Styles.titleNotAddedYet}>No breweries added yet</h3>
@@ -28,16 +34,18 @@ const MyBreweriesModule = () => {
           </h4>
         </div>
       ) : null}
-      {breweries?.map((brewery: Brewery | null) => {
-        return (
-          <EachBrewery
-            titleValue={false}
-            toogleBtnValue={false}
-            key={brewery?.id}
-            brewery={brewery}
-          />
-        );
-      })}
+      <div className={Styles.container}>
+        {breweries?.map((brewery: Brewery | null) => {
+          return (
+            <EachBrewery
+              titleValue={false}
+              toogleBtnValue={false}
+              key={brewery?.id}
+              brewery={brewery}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
