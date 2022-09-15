@@ -75,6 +75,7 @@ const SearchBrewery = () => {
         {brewries?.map((brewery) => {
           return (
             <EachBrewery
+              toogleRemove={false}
               brewery={brewery}
               toogleBtnValue={true}
               titleValue={true}

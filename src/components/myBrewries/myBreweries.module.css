@@ -44,3 +44,9 @@
 .visitedSpan{
     color:rgb(249, 192, 24) ;
 }
+.underTextWrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}

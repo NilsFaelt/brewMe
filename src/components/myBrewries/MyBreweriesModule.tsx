@@ -21,23 +21,28 @@ const MyBreweriesModule = () => {
   return (
     <div className={Styles.container}>
       <h2 className={Styles.title}>My Breweries</h2>
-      <p className={Styles.visitedbreweriesText}>
-        Visited Breweries:{" "}
-        <span className={Styles.visitedSpan}>{visitedBreweries.length}</span> /
-        {breweries.length}
-      </p>
-      {breweries.length === 0 ? (
-        <div>
-          <h3 className={Styles.titleNotAddedYet}>No breweries added yet</h3>
-          <h4 className={Styles.underTitle}>
-            Go check out some breweries and then come back
-          </h4>
-        </div>
-      ) : null}
+      <div className={Styles.underTextWrapper}>
+        <p className={Styles.visitedbreweriesText}>
+          Visited Breweries:
+          <span className={Styles.visitedSpan}>
+            {visitedBreweries.length}
+          </span>{" "}
+          /{breweries.length}
+        </p>
+        {breweries.length === 0 ? (
+          <div>
+            <h3 className={Styles.titleNotAddedYet}>No breweries added yet</h3>
+            <h4 className={Styles.underTitle}>
+              Go check out some breweries and then come back
+            </h4>
+          </div>
+        ) : null}
+      </div>
       <div className={Styles.container}>
         {breweries?.map((brewery: Brewery | null) => {
           return (
             <EachBrewery
+              toogleRemove={true}
               titleValue={false}
               toogleBtnValue={false}
               key={brewery?.id}

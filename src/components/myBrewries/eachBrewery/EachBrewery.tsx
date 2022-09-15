@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nrAndBooleanForImgGenetarot } from "../../../functions/nrAndBooleanForImgGenetarot";
-import { toogleDone } from "../../../redux/myBreweries";
+import { removeBrewery, toogleDone } from "../../../redux/myBreweries";
 import { addBrewry } from "../../../redux/myBreweries";
 import Button from "../../button/Button";
 import Styles from "./eachBrewery.module.css";
@@ -24,12 +24,14 @@ interface Props {
   brewery: Brewery | null;
   toogleBtnValue: boolean;
   titleValue: boolean;
+  toogleRemove: boolean;
 }
 
 const EachBrewery: React.FC<Props> = ({
   brewery,
   toogleBtnValue,
   titleValue,
+  toogleRemove,
 }) => {
   const dispatch = useDispatch();
   const [urlGeneratorNr, setUrlGeneratorNr] = useState<number>(5);
@@ -49,6 +51,10 @@ const EachBrewery: React.FC<Props> = ({
     brewery,
     breweries
   );
+
+  const removeBreery = () => {
+    dispatch(removeBrewery({ id: brewery?.id }));
+  };
 
   const handleClicked = () => {
     if (!breweryDidAlreadyExist) {
@@ -78,16 +84,21 @@ const EachBrewery: React.FC<Props> = ({
     >
       <div className={Styles.container}>
         {!breweryDidAlreadyExist ? (
-          <h3 className={Styles.title}>{brewery?.name}</h3>
+          <h3 className={Styles.title}>{brewery?.name} </h3>
         ) : (
           <h3 className={Styles.title}>
-            {brewery?.name}{" "}
+            {brewery?.name}
             {titleValue ? (
               <span className={Styles.added}>/Added to MyBrews</span>
             ) : null}
           </h3>
         )}
         <div className={Styles.infodiv}>
+          {toogleRemove ? (
+            <p onClick={removeBreery} className={Styles.remove}>
+              Remove Brewery
+            </p>
+          ) : null}
           <p>
             <span className={Styles.infoSpan}>Country:</span> {brewery?.country}
           </p>
