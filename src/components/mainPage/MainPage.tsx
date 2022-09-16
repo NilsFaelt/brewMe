@@ -66,7 +66,7 @@ const MainPage = () => {
       </div>
       <div className={Styles.lotsOfBeerDiv}>
         {bunchOfBeers?.map((beer: Beer) => {
-          return <EachBeer beer={beer} />;
+          return <EachBeer key={beer.id} toogleBtn={true} beer={beer} />;
         })}
       </div>
     </div>

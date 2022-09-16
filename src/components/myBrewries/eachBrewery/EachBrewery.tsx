@@ -111,7 +111,7 @@ const EachBrewery: React.FC<Props> = ({
           <p>
             {brewery?.done ? (
               <div className={Styles.beenThereDiv}>
-                <h3 className={Styles.beenThereTitle}>Been There</h3>
+                <p className={Styles.beenThereTitle}>Been There</p>
                 <img className={Styles.img} src={beer} alt='' />{" "}
               </div>
             ) : null}

@@ -30,13 +30,9 @@
 
 @keyframes  spin{
     10%{
-  
     }
   
     100%{
-        
-        transform: rotate(1440deg);
-      
-        
+        transform: rotate(1440deg) scale(2.2);
     }
   }
