@@ -3,16 +3,17 @@
     height:auto;
     background-size: cover;
     padding-bottom: 2vh;
+   
     
 }
 .title{
-    background-color: rgba(0, 0, 0, 0.837);
+    background-color: rgb(0, 0, 0);
     width: 100%;
     padding-top: 2vh;
     padding-bottom: 2vh;
     text-align: center;
     font-family: 'Anton', sans-serif;
-    color: white;
+    color: rgb(249, 192, 24);
     text-decoration: underline 2px rgb(21, 211, 211);
 }
 
@@ -20,7 +21,7 @@
     color: rgb(249, 192, 24);
 }
 .infodiv{
-    background-color: rgba(0, 0, 0, 0.822);
+    background-color: rgb(0, 0, 0);
     padding: 1vw;
     padding-bottom: 2vw;
     margin-top: 4vh;
@@ -30,6 +31,7 @@
     flex-direction: column;
     gap: 1vh;
     margin-bottom: 2vh;
+    font-family: 'Anton', sans-serif;
 }
 .infoSpan{
     font-size: calc(10px + 0.5vw);
@@ -66,7 +68,7 @@
     width: clamp(100px, 7vw, 10vw);
 }
 .added{
-    color:rgb(249, 192, 24) ;
+    color:rgb(21, 211, 211) ;
 }
 .remove{
     text-align: center;
@@ -74,5 +76,5 @@
     text-decoration: underline 1px solid teal;
     color: rgba(240, 9, 9, 0.888);
     cursor: pointer;
-    font-size: calc(10px + 0.5vw);
+    font-size: calc(10px + 0.2vw);
 }

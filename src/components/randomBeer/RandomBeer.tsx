@@ -25,7 +25,6 @@ const RandomBeer = () => {
     };
     fetchWrapperAsync();
   }, []);
-  console.log(randomBeer);
 
   return (
     <div className={Styles.container}>

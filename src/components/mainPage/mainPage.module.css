@@ -1,9 +1,45 @@
 .container{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+    width: 100vw;
+
+}
+.randomBrewWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10vw;
+    justify-content: center;
+}
+.titleWrapper{
+    margin-top: 0vh;
+    margin-bottom: 10vh;
+}
+.underTitle{
+    font-family: 'Bungee Spice', cursive;
+    color: white;
+    transform: rotate(0deg);
+    font-size: calc(25px + 0.5vw);
+    text-decoration: underline 1px solid white;
+}
+.underTitleSpan{
+    font-size: calc(20px + 0.5vw);
+    margin-top: 0.5vh;
+    margin-left: 2vw;
+    font-family: 'Bungee Spice', cursive;
+    color: white;
+    transform: rotate(30deg);
+    text-decoration: underline 1px solid white;
+}
+.lotsOfBeerDiv{
+
+    width: 100vw;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10vw;
-    width: 100vw;
-
 }
