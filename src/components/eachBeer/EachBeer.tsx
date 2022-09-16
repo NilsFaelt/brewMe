@@ -24,6 +24,7 @@ interface Props {
 }
 
 const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
+  const btnTitle = beer.taseted ? "Not Tasted" : "Tasted";
   const dispatch = useDispatch();
   const alreadyAdded = useSelector((state: any) =>
     state.myBeers.beers.filter((brew: Beer) => brew.id === beer.id)
@@ -58,6 +59,11 @@ const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
       <div className={Styles.infoDiv}>
         <p className={Styles.infoText}>Name: {beer?.name}</p>
         <p className={Styles.infoText}>Description: {beer?.description}</p>
+        {beer.taseted ? (
+          <div className={Styles.tastedThatBrewDiv}>
+            <p className={Styles.tastedThatBrew}>Tasted That Brew</p>
+          </div>
+        ) : null}
         <p className={Styles.infoText}>ABV: {beer?.abv}</p>
         <p className={Styles.infoText}>Creator: {beer?.contributed_by}</p>
         <p className={Styles.infoText}>Food pairing: {beer?.food_pairing}</p>
@@ -70,13 +76,11 @@ const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
         ) : (
           <Button
             handleClick={handleClickTasted}
-            title='Tasted'
+            title={btnTitle}
             ifTruebtnRed={false}
           />
         )}
       </div>
-
-      {beer.taseted ? <p>hehdkeqrfkqrefyerfqe</p> : null}
     </div>
   );
 };
