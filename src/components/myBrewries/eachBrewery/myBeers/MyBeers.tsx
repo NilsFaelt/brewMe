@@ -13,6 +13,7 @@ interface Beer {
   image_url: string;
   name: string;
   tagline?: string;
+  taseted: boolean;
 }
 
 const MyBeers = () => {

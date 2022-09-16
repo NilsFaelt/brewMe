@@ -12,6 +12,7 @@ interface Beer {
     image_url: string;
     name: string;
     tagline?: string;
+    taseted:boolean
   }
 
 export const myBeers:Slice = createSlice({
@@ -24,24 +25,24 @@ export const myBeers:Slice = createSlice({
         state.beers = [...state.beers, action.payload]
             console.log(state.beers, 'INSIED MY beers')
         },
-        toogleDone:(state, action)=>{
-           state.breweries = state.breweries.map((brewery:any)=>{
-                if(brewery.id === action.payload.id){
-                    return {...brewery, done: !brewery.done }
+        toogleTasted:(state, action)=>{
+           state.beers = state.beers.map((beer:any)=>{
+                if(beer.id === action.payload.id){
+                    return {...beer, taseted: !beer.taseted }
                 }
                 else{
-                    return brewery
+                    return beer
                 }
             })
-            console.log(state.breweries)
+            console.log(state.beers)
         },
         removeBeer:(state, action)=>{
-            state.breweries = state.breweries.filter((beer:any)=> beer.id !== action.payload.id)
+            state.beers = state.beers.filter((beer:any)=> beer.id !== action.payload.id)
         }
 
     }
 })
 
 
-export const {addBeer, toogleDone,removeBeer } = myBeers.actions
+export const {addBeer, toogleTasted,removeBeer } = myBeers.actions
 export default myBeers.reducer

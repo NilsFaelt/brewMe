@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchRandomBeer } from "../../functions/fetchRandomBeer";
-import { addBeer } from "../../redux/myBeers";
+import { addBeer, toogleTasted } from "../../redux/myBeers";
 import Button from "../button/Button";
 import Styles from "./eachBeer.module.css";
 
@@ -15,6 +15,7 @@ interface Beer {
   image_url: string;
   name: string;
   tagline?: string;
+  taseted: boolean;
 }
 
 interface Props {
@@ -24,20 +25,32 @@ interface Props {
 
 const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
   const dispatch = useDispatch();
+  const alreadyAdded = useSelector((state: any) =>
+    state.myBeers.beers.filter((brew: Beer) => brew.id === beer.id)
+  );
+  console.log(alreadyAdded, "addddded");
+
+  const handleClickTasted = () => {
+    dispatch(toogleTasted({ id: beer.id }));
+  };
+
   const handleClick = () => {
-    dispatch(
-      addBeer({
-        abv: beer?.abv,
-        brewers_tips: beer.brewers_tips,
-        contributed_by: beer.contributed_by,
-        description: beer.description,
-        food_pairing: beer.food_pairing,
-        id: beer.id,
-        image_url: beer.image_url,
-        name: beer.name,
-        tagline: beer.tagline,
-      })
-    );
+    if (alreadyAdded.length === 0) {
+      dispatch(
+        addBeer({
+          abv: beer?.abv,
+          brewers_tips: beer.brewers_tips,
+          contributed_by: beer.contributed_by,
+          description: beer.description,
+          food_pairing: beer.food_pairing,
+          id: beer.id,
+          image_url: beer.image_url,
+          name: beer.name,
+          tagline: beer.tagline,
+          taseted: false,
+        })
+      );
+    }
   };
   return (
     <div className={Styles.container}>
@@ -54,8 +67,16 @@ const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
             title='Add To My Breews'
             ifTruebtnRed={false}
           />
-        ) : null}
+        ) : (
+          <Button
+            handleClick={handleClickTasted}
+            title='Tasted'
+            ifTruebtnRed={false}
+          />
+        )}
       </div>
+
+      {beer.taseted ? <p>hehdkeqrfkqrefyerfqe</p> : null}
     </div>
   );
 };
