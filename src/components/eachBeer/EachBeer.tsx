@@ -24,12 +24,13 @@ interface Props {
 }
 
 const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
-  const btnTitle = beer.taseted ? "Not Tasted" : "Tasted";
-  const dispatch = useDispatch();
   const alreadyAdded = useSelector((state: any) =>
     state.myBeers.beers.filter((brew: Beer) => brew.id === beer.id)
   );
-  console.log(alreadyAdded, "addddded");
+  const btnTitle = beer.taseted ? "Not Tasted" : "Tasted";
+  const btnTitleAddeBrew =
+    alreadyAdded?.length === 0 ? "Add Brew" : "Already Added";
+  const dispatch = useDispatch();
 
   const handleClickTasted = () => {
     dispatch(toogleTasted({ id: beer.id }));
@@ -70,7 +71,7 @@ const EachBeer: React.FC<Props> = ({ beer, toogleBtn }) => {
         {toogleBtn ? (
           <Button
             handleClick={handleClick}
-            title='Add To My Breews'
+            title={btnTitleAddeBrew}
             ifTruebtnRed={false}
           />
         ) : (

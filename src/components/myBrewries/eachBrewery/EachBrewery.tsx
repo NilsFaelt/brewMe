@@ -80,7 +80,7 @@ const EachBrewery: React.FC<Props> = ({
   return (
     <div
       className={Styles.container}
-      style={{ backgroundImage: `url(${arrayOfUrls[urlGeneratorNr]})` }}
+      // style={{ backgroundImage: `url(${arrayOfUrls[urlGeneratorNr]})` }}
     >
       <div className={Styles.container}>
         {!breweryDidAlreadyExist ? (
@@ -93,6 +93,7 @@ const EachBrewery: React.FC<Props> = ({
             ) : null}
           </h3>
         )}
+
         <div className={Styles.infodiv}>
           {toogleRemove ? (
             <p onClick={removeBreery} className={Styles.remove}>
